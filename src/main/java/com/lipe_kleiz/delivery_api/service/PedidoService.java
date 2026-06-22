@@ -1,39 +1,24 @@
 package com.lipe_kleiz.delivery_api.service;
 
+import java.math.BigDecimal;
 import java.util.List;
-import java.util.Optional;
 
-import org.springframework.stereotype.Service;
+import com.lipe_kleiz.delivery_api.dto.ItemPedidoDTO;
+import com.lipe_kleiz.delivery_api.dto.PedidoDTO;
+import com.lipe_kleiz.delivery_api.dto.PedidoResponseDTO;
+import com.lipe_kleiz.delivery_api.enums.StatusPedido;
 
-import com.lipe_kleiz.delivery_api.model.Pedido;
-import com.lipe_kleiz.delivery_api.repository.PedidoRepository;
+public interface PedidoService {
 
-@Service
-public class PedidoService {
+    PedidoResponseDTO criarPedido(PedidoDTO dto);
 
-    private final PedidoRepository pedidoRepository;
+    PedidoResponseDTO buscarPedidoPorId(Long id);
 
-    public PedidoService(PedidoRepository pedidoRepository) {
-        this.pedidoRepository = pedidoRepository;
-    }
+    List<PedidoResponseDTO> buscarPedidosPorCliente(Long clienteId);
 
-    public long totalPedidos() {
-        return pedidoRepository.count();
-    }
+    PedidoResponseDTO atualizarStatusPedido(Long id, StatusPedido status);
 
-    public Pedido salvarPedido(Pedido pedido) {
-        return pedidoRepository.save(pedido);
-    }
+    BigDecimal calcularTotalPedido(List<ItemPedidoDTO> itens);
 
-    public List<Pedido> listarTodos() {
-        return pedidoRepository.findAll();
-    }
-
-    public Optional<Pedido> buscarPorId(Long id) {
-        return pedidoRepository.findById(id);
-    }
-
-    public void excluir(Long id) {
-        pedidoRepository.deleteById(id);
-    }
+    void cancelarPedido(Long id);
 }

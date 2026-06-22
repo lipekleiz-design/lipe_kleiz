@@ -17,6 +17,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Transient;
 import lombok.Data;
 
@@ -51,6 +52,18 @@ public class Pedido {
         orphanRemoval = true
     )
     private List<ItemPedido> itens = new ArrayList<>();
+
+    @PrePersist
+    public void prePersist() {
+
+        if (dataPedido == null) {
+            dataPedido = LocalDateTime.now();
+        }
+
+        if (status == null) {
+            status = StatusPedido.PENDENTE;
+        }
+    }
 
     @Transient
     public BigDecimal getSubtotal() {

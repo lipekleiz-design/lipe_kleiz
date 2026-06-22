@@ -1,24 +1,21 @@
 package com.lipe_kleiz.delivery_api.service;
 
-import org.springframework.stereotype.Service;
+import java.util.List;
 
-import com.lipe_kleiz.delivery_api.model.Cliente;
-import com.lipe_kleiz.delivery_api.repository.ClienteRepository;
+import com.lipe_kleiz.delivery_api.dto.ClienteDTO;
+import com.lipe_kleiz.delivery_api.dto.ClienteResponseDTO;
 
-@Service // A anotação @Service indica que esta classe é um serviço do Spring, o que a torna um componente gerenciado pelo Spring e permite que ela seja injetada em outras partes da aplicação.
-public class ClienteService {
+public interface ClienteService { // Interface para o serviço de Cliente
 
-    private final ClienteRepository clienteRepository;
+    ClienteResponseDTO cadastrarCliente(ClienteDTO dto);
 
-    public ClienteService(ClienteRepository clienteRepository) {
-        this.clienteRepository = clienteRepository;
-    }
+    ClienteResponseDTO buscarClientePorId(Long id);
 
-    public long totalClientes() {
-        return clienteRepository.count();
-    }
-    
-    public Cliente salvarCliente(Cliente cliente) {
-        return clienteRepository.save(cliente);
-    }
+    ClienteResponseDTO buscarClientePorEmail(String email);
+
+    ClienteResponseDTO atualizarCliente(Long id, ClienteDTO dto);
+
+    ClienteResponseDTO ativarDesativarCliente(Long id);
+
+    List<ClienteResponseDTO> listarClientesAtivos();
 }
