@@ -4,56 +4,60 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.lipe_kleiz.delivery_api.model.Restaurante;
 
-public interface RestauranteRepository extends JpaRepository<Restaurante, Long> {
+public interface RestauranteRepository
+extends JpaRepository<Restaurante, Long> {
 
-    // Buscar por nome
-    Optional<Restaurante> findByNome(String nome);
+Optional<Restaurante> findByNome(String nome);
 
-    // Restaurantes ativos
-    List<Restaurante> findByAtivoTrue();
+List<Restaurante> findByAtivoTrue();
 
-    // Buscar por categoria
-    List<Restaurante> findByCategoriaAndAtivoTrue(String categoria);
+Page<Restaurante> findByAtivoTrue(Pageable pageable);
 
-    // Buscar por parte do nome
-    List<Restaurante> findByNomeContainingIgnoreCaseAndAtivoTrue(String nome);
+List<Restaurante> findByCategoriaAndAtivoTrue(
+        String categoria);
 
-    // Restaurantes que possuem produtos
-    @Query("""
-        SELECT DISTINCT r
-        FROM Restaurante r
-        JOIN r.produtos p
-        WHERE r.ativo = true
-    """)
-    List<Restaurante> findRestaurantesComProdutos();
+Page<Restaurante> findByCategoriaAndAtivoTrue(
+        String categoria,
+        Pageable pageable);
 
-    // Faixa de taxa de entrega
-    @Query("""
-        SELECT r
-        FROM Restaurante r
-        WHERE r.taxaEntrega BETWEEN :min AND :max
-        AND r.ativo = true
-    """)
-    List<Restaurante> findByTaxaEntregaBetween(
-            @Param("min") BigDecimal min,
-            @Param("max") BigDecimal max
-    );
+List<Restaurante> findByNomeContainingIgnoreCaseAndAtivoTrue(
+        String nome);
 
-    // Categorias existentes
-    @Query("""
-        SELECT DISTINCT r.categoria
-        FROM Restaurante r
-        WHERE r.ativo = true
-        ORDER BY r.categoria
-    """)
-    List<String> findCategoriasDisponiveis();
+@Query("""
+    SELECT DISTINCT r
+    FROM Restaurante r
+    JOIN r.produtos p
+    WHERE r.ativo = true
+""")
+List<Restaurante> findRestaurantesComProdutos();
 
-    // Contagem de restaurantes ativos
-    Long countByAtivoTrue();
+@Query("""
+    SELECT r
+    FROM Restaurante r
+    WHERE r.taxaEntrega BETWEEN :min AND :max
+    AND r.ativo = true
+""")
+List<Restaurante> findByTaxaEntregaBetween(
+        @Param("min") BigDecimal min,
+        @Param("max") BigDecimal max
+);
+
+@Query("""
+    SELECT DISTINCT r.categoria
+    FROM Restaurante r
+    WHERE r.ativo = true
+    ORDER BY r.categoria
+""")
+List<String> findCategoriasDisponiveis();
+
+Long countByAtivoTrue();
+
 }

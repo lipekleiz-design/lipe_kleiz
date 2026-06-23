@@ -1,39 +1,38 @@
 package com.lipe_kleiz.delivery_api.service;
 
 import java.util.List;
-import java.util.Optional;
 
-import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
-import com.lipe_kleiz.delivery_api.model.Restaurante;
-import com.lipe_kleiz.delivery_api.repository.RestauranteRepository;
+import com.lipe_kleiz.delivery_api.dto.RestauranteDTO;
+import com.lipe_kleiz.delivery_api.dto.RestauranteResponseDTO;
 
-@Service
-public class RestauranteService {
+public interface RestauranteService {
 
-    private final RestauranteRepository restauranteRepository;
+RestauranteResponseDTO cadastrarRestaurante(
+        RestauranteDTO dto);
 
-    public RestauranteService(RestauranteRepository restauranteRepository) {
-        this.restauranteRepository = restauranteRepository;
-    }
+RestauranteResponseDTO buscarRestaurantePorId(
+        Long id);
 
-    public long totalRestaurantes() {
-        return restauranteRepository.count();
-    }
+List<RestauranteResponseDTO> listarRestaurantesAtivos();
 
-    public Restaurante salvarRestaurante(Restaurante restaurante) {
-        return restauranteRepository.save(restaurante);
-    }
+Page<RestauranteResponseDTO> listarRestaurantes(
+        String categoria,
+        Boolean ativo,
+        Pageable pageable);
 
-    public List<Restaurante> listarTodos() {
-        return restauranteRepository.findAll();
-    }
+RestauranteResponseDTO atualizarRestaurante(
+        Long id,
+        RestauranteDTO dto);
 
-    public Optional<Restaurante> buscarPorId(Long id) {
-        return restauranteRepository.findById(id);
-    }
+RestauranteResponseDTO alterarStatusRestaurante(
+        Long id);
 
-    public void excluir(Long id) {
-        restauranteRepository.deleteById(id);
-    }
+List<RestauranteResponseDTO> buscarPorCategoria(
+        String categoria);
+
+Long totalRestaurantesAtivos();
+
 }
