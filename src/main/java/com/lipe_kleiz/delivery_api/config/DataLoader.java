@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import com.lipe_kleiz.delivery_api.entity.Cliente;
 import com.lipe_kleiz.delivery_api.repository.ClienteRepository;
 
-@Component
+//@Component
 public class DataLoader implements CommandLineRunner {
 
     private final ClienteRepository clienteRepository;

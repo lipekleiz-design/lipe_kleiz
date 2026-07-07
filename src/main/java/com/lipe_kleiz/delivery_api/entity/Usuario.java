@@ -15,6 +15,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -35,7 +36,7 @@ public class Usuario implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String nome;
 
     @Column(nullable = false, unique = true)
@@ -48,18 +49,27 @@ public class Usuario implements UserDetails {
     @Column(nullable = false)
     private Role role;
 
-    @Column(nullable = false)
     @Builder.Default
+    @Column(nullable = false)
     private Boolean ativo = true;
 
-    @Column(nullable = false)
     @Builder.Default
+    @Column(nullable = false)
     private LocalDateTime dataCriacao = LocalDateTime.now();
+
+    @PrePersist
+    public void prePersist() {
+        if (dataCriacao == null) {
+            dataCriacao = LocalDateTime.now();
+        }
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
+
         return List.of(
                 new SimpleGrantedAuthority("ROLE_" + role.name()));
+
     }
 
     @Override
@@ -91,4 +101,5 @@ public class Usuario implements UserDetails {
     public boolean isEnabled() {
         return ativo;
     }
+
 }
