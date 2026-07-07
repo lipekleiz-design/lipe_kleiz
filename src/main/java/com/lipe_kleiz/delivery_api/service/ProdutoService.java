@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.lipe_kleiz.delivery_api.model.Produto;
+import com.lipe_kleiz.delivery_api.entity.Produto;
 import com.lipe_kleiz.delivery_api.repository.ProdutoRepository;
 
 @Service

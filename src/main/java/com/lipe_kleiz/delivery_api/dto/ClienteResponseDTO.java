@@ -10,7 +10,7 @@ public class ClienteResponseDTO {
     private boolean ativo;
 
     // Getters e Setters
-    public Long getId() { return id; }
+    public Long getId() { return id; } // a maneira que puxamos o ID
     public void setId(Long id) { this.id = id; }
 
     public String getNome() { return nome; }

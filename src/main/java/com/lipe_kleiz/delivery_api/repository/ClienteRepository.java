@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import com.lipe_kleiz.delivery_api.model.Cliente;
+import com.lipe_kleiz.delivery_api.entity.Cliente;
 
 public interface ClienteRepository extends JpaRepository<Cliente, Long> {
 

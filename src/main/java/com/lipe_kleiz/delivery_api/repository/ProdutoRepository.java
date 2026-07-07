@@ -5,9 +5,9 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import com.lipe_kleiz.delivery_api.entity.Produto;
+import com.lipe_kleiz.delivery_api.entity.Restaurante;
 import com.lipe_kleiz.delivery_api.enums.CategoriaProduto;
-import com.lipe_kleiz.delivery_api.model.Produto;
-import com.lipe_kleiz.delivery_api.model.Restaurante;
 
 public interface ProdutoRepository extends JpaRepository<Produto, Long> {
 

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.lipe_kleiz.delivery_api.dto.ClienteDTO;
 import com.lipe_kleiz.delivery_api.dto.ClienteResponseDTO;
-import com.lipe_kleiz.delivery_api.model.Cliente;
+import com.lipe_kleiz.delivery_api.entity.Cliente;
 import com.lipe_kleiz.delivery_api.repository.ClienteRepository;
 
 @Service

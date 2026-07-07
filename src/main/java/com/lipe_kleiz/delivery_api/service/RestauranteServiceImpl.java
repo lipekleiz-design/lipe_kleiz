@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.lipe_kleiz.delivery_api.dto.RestauranteDTO;
 import com.lipe_kleiz.delivery_api.dto.RestauranteResponseDTO;
-import com.lipe_kleiz.delivery_api.model.Restaurante;
+import com.lipe_kleiz.delivery_api.entity.Restaurante;
 import com.lipe_kleiz.delivery_api.repository.RestauranteRepository;
 
 @Service

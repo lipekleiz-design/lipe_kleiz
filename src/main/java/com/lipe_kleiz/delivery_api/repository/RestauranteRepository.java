@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import com.lipe_kleiz.delivery_api.model.Restaurante;
+import com.lipe_kleiz.delivery_api.entity.Restaurante;
 
 public interface RestauranteRepository
 extends JpaRepository<Restaurante, Long> {

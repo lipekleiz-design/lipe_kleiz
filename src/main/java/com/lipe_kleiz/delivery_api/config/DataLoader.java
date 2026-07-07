@@ -5,7 +5,7 @@ import java.util.Arrays;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import com.lipe_kleiz.delivery_api.model.Cliente;
+import com.lipe_kleiz.delivery_api.entity.Cliente;
 import com.lipe_kleiz.delivery_api.repository.ClienteRepository;
 
 @Component

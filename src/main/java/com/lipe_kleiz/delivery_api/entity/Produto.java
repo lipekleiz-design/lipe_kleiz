@@ -1,4 +1,4 @@
-package com.lipe_kleiz.delivery_api.model;
+package com.lipe_kleiz.delivery_api.entity;
 
 import java.math.BigDecimal;
 

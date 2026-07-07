@@ -1,5 +1,6 @@
-package com.lipe_kleiz.delivery_api.model;
+package com.lipe_kleiz.delivery_api.entity;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,6 +24,7 @@ public class Cliente {
     public Cliente() {
     }
 
+    @Schema(description = "Construtor da classe Cliente com parâmetros para inicializar os campos.")
     //getters e setters para os campos da classe Cliente
     public Long getId() {
         return id;
