@@ -7,27 +7,27 @@ INSERT INTO usuario
 (id, nome, email, senha, role, ativo, data_criacao)
 VALUES
 (1, 'Administrador', 'admin@delivery.com',
-'$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iKXulpZR8J4OY6Nd4EMCFyZw4ufC',
+'$2a$10$DW3srwoRfo4srwvYXxhin.dXDsVFZux9fMevr7yyYGBUxYkwCzwe6',
 'ADMIN', TRUE, CURRENT_TIMESTAMP),
 
 (2, 'João Silva', 'joao@email.com',
-'$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iKXulpZR8J4OY6Nd4EMCFyZw4ufC',
+'$2a$10$DW3srwoRfo4srwvYXxhin.dXDsVFZux9fMevr7yyYGBUxYkwCzwe6',
 'CLIENTE', TRUE, CURRENT_TIMESTAMP),
 
 (3, 'Maria Souza', 'maria@email.com',
-'$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iKXulpZR8J4OY6Nd4EMCFyZw4ufC',
+'$2a$10$DW3srwoRfo4srwvYXxhin.dXDsVFZux9fMevr7yyYGBUxYkwCzwe6',
 'CLIENTE', TRUE, CURRENT_TIMESTAMP),
 
 (4, 'Pizza Palace', 'pizza@palace.com',
-'$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iKXulpZR8J4OY6Nd4EMCFyZw4ufC',
+'$2a$10$DW3srwoRfo4srwvYXxhin.dXDsVFZux9fMevr7yyYGBUxYkwCzwe6',
 'RESTAURANTE', TRUE, CURRENT_TIMESTAMP),
 
 (5, 'Burger House', 'burger@house.com',
-'$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iKXulpZR8J4OY6Nd4EMCFyZw4ufC',
+'$2a$10$DW3srwoRfo4srwvYXxhin.dXDsVFZux9fMevr7yyYGBUxYkwCzwe6',
 'RESTAURANTE', TRUE, CURRENT_TIMESTAMP),
 
 (6, 'Carlos Entregador', 'carlos@entrega.com',
-'$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iKXulpZR8J4OY6Nd4EMCFyZw4ufC',
+'$2a$10$DW3srwoRfo4srwvYXxhin.dXDsVFZux9fMevr7yyYGBUxYkwCzwe6',
 'ENTREGADOR', TRUE, CURRENT_TIMESTAMP);
 
 
