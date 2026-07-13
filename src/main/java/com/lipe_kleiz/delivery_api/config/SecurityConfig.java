@@ -38,46 +38,47 @@ public class SecurityConfig {
 
         http
 
-            .csrf(csrf -> csrf.disable())
+                .csrf(csrf -> csrf.disable())
 
-            .sessionManagement(session ->
-                    session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .sessionManagement(session -> session
+                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 
-            .authenticationProvider(authenticationProvider())
+                .authenticationProvider(authenticationProvider())
 
-            .authorizeHttpRequests(auth -> auth
+                .authorizeHttpRequests(auth -> auth
 
-                    .requestMatchers(
-                            "/api/auth/**",
-                            "/swagger-ui/**",
-                            "/swagger-ui.html",
-                            "/v3/api-docs/**",
-                            "/h2-console/**")
-                    .permitAll()
+                        .requestMatchers(
+                                "/api/auth/**",
+                                "/swagger-ui/**",
+                                "/swagger-ui.html",
+                                "/v3/api-docs/**",
+                                "/h2-console/**",
+                                "/error")
+                        .permitAll()
 
-                    .anyRequest()
-                    .authenticated())
+                        .anyRequest()
+                        .authenticated())
 
-            .headers(headers ->
-                    headers.frameOptions(frame -> frame.disable()))
+                .headers(headers ->
+                        headers.frameOptions(frame -> frame.disable()))
 
-            .addFilterBefore(
-                    jwtAuthenticationFilter,
-                    UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore(
+                        jwtAuthenticationFilter,
+                        UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
 
-   @Bean
-public AuthenticationProvider authenticationProvider() {
+    @Bean
+    public AuthenticationProvider authenticationProvider() {
 
-    DaoAuthenticationProvider provider =
-            new DaoAuthenticationProvider(userDetailsService);
+        DaoAuthenticationProvider provider =
+                new DaoAuthenticationProvider(userDetailsService);
 
-    provider.setPasswordEncoder(passwordEncoder());
+        provider.setPasswordEncoder(passwordEncoder());
 
-    return provider;
-}
+        return provider;
+    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -92,5 +93,4 @@ public AuthenticationProvider authenticationProvider() {
 
         return configuration.getAuthenticationManager();
     }
-
 }
