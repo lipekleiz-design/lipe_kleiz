@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lipe_kleiz.delivery_api.config.SwaggerConfig;
 import com.lipe_kleiz.delivery_api.dto.ClienteDTO;
 import com.lipe_kleiz.delivery_api.dto.ClienteResponseDTO;
 import com.lipe_kleiz.delivery_api.service.ClienteService;
@@ -22,8 +23,10 @@ import com.lipe_kleiz.delivery_api.service.ClienteService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+
 
 @Tag(
     name = "Clientes",
@@ -31,6 +34,7 @@ import jakarta.validation.Valid;
 )
 @RestController
 @RequestMapping("/api/clientes")
+@SecurityRequirement(name = SwaggerConfig.SECURITY_SCHEME_NAME)
 @CrossOrigin(origins = "*")
 public class ClienteController {
 
