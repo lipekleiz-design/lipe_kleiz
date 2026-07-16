@@ -46,7 +46,7 @@ public class SecurityConfig {
                 .authenticationProvider(authenticationProvider())
 
                 .authorizeHttpRequests(auth -> auth
-
+                        //endpoints that don't require authentication
                         .requestMatchers(
                                 "/api/auth/**",
                                 "/swagger-ui/**",
